@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+  COMP 4610 GUI I - HW4 Part 2: Dynamic Multiplication Table
+  Author: Alexi Montesinos
+  Email: Alexi_Montesinos@student.uml.edu
+  Description: Extends Part 1 with jQuery UI sliders (two-way bound to text
+               inputs) and a tabbed interface that stores each generated table
+               in its own closeable tab. Individual and bulk tab deletion is
+               supported.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Multiplication Table</title>
+  <!-- jQuery UI smoothness theme -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Dynamic Multiplication Table</h1>
+  </header>
+
+  <main>
+    <div id="tabs">
+      <ul>
+        <li><a href="#tab-input">Parameters</a></li>
+      </ul>
+
+      <!-- ── Parameters tab ───────────────────────────────── -->
+      <div id="tab-input">
+        <form id="tableForm" novalidate>
+          <fieldset>
+            <legend>Please enter the table ranges</legend>
+
+            <div class="form-group">
+              <label for="minCol">Minimum Column Value</label>
+              <input type="number" id="minCol" name="minCol" placeholder="-50 to 50">
+              <div id="minCol-slider" class="slider"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="maxCol">Maximum Column Value</label>
+              <input type="number" id="maxCol" name="maxCol" placeholder="-50 to 50">
+              <div id="maxCol-slider" class="slider"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="minRow">Minimum Row Value</label>
+              <input type="number" id="minRow" name="minRow" placeholder="-50 to 50">
+              <div id="minRow-slider" class="slider"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="maxRow">Maximum Row Value</label>
+              <input type="number" id="maxRow" name="maxRow" placeholder="-50 to 50">
+              <div id="maxRow-slider" class="slider"></div>
+            </div>
+
+            <div class="btn-row">
+              <button type="submit" id="generateBtn">Snapshot → New Tab</button>
+              <button type="button" id="deleteAllBtn">Delete All Tables</button>
+            </div>
+          </fieldset>
+        </form>
+
+        <!-- Live preview updates without clicking Generate -->
+        <div id="preview-section" class="preview-section hidden">
+          <h2 class="preview-label">Live Preview</h2>
+          <div id="preview-container" class="table-container"></div>
+        </div>
+      </div>
+      <!-- Table tabs are added here dynamically -->
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.20.0/dist/jquery.validate.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
